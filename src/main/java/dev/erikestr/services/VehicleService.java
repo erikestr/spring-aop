@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import dev.erikestr.interfaces.Speakers;
 import dev.erikestr.interfaces.Tyres;
+import dev.erikestr.interfaces.annotations.LogAspect;
 import dev.erikestr.model.Song;
 
 @Service
@@ -20,15 +21,18 @@ public class VehicleService {
 
     }
 
+    @LogAspect
     public String playMusic(boolean vehicleStarted, Song song) {
         return vehicleStarted ? speakers.makeSound(song) : null;
     }
 
+    @LogAspect
     public String moveVehicle(boolean vehicleStarted) {
         // throw new RuntimeException("Simulated exception in moveVehicle");
         return vehicleStarted ? tyres.rotate() : null;
     }
 
+    @LogAspect
     public String applyBrake(boolean vehicleStarted) {
         return vehicleStarted ? tyres.stopRotation() : null;
     }
