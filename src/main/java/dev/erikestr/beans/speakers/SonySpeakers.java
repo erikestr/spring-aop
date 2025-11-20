@@ -22,7 +22,6 @@ public class SonySpeakers implements Speakers {
 
     @Override
     public String makeSound(Song song) {
-        System.out.println("\u001B[34mSonySpeakers " + model + " is making sound at volume " + volume + "\u001B[0m");
         return "Sound playing: " + (song != null ? song.getTitle() : "No song");
     }
 

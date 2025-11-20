@@ -18,7 +18,6 @@ public class BoseSpeakers implements Speakers {
 
     @Override
     public String makeSound(Song song) {
-        System.out.println("\u001B[31mBoseSpeakers " + model + " is making sound at volume " + volume + "\u001B[0m");
         return "Sound playing: " + (song != null ? song.getTitle() : "No song");
     }
 
