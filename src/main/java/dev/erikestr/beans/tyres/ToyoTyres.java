@@ -45,7 +45,6 @@ public class ToyoTyres implements Tyres {
     @Override
     public String stopRotation() {
         String message = "\u001B[35mToyo tyres have stopped\u001B[0m";
-        System.out.println(message);
         return message;
     }
 

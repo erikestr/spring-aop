@@ -47,7 +47,6 @@ public class BridgeStoneTyres implements Tyres {
     @Override
     public String stopRotation() {
         String message = "\u001B[35mBridgeStone tyres have stopped\u001B[0m";
-        System.out.println(message);
         return message;
     }
 }
