@@ -6,14 +6,15 @@ import java.time.Instant;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+@Order(2)
 public class LoggerAspect {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -53,13 +54,6 @@ public class LoggerAspect {
     public void pointcutMoveVehicle(boolean vehicleStarted) {
     };
 
-    @Before("pointcutMoveVehicle(vehicleStarted)")
-    public void logBeforeMoveVehicle(boolean vehicleStarted) {
-        if (!vehicleStarted) {
-            logger.info("Vehicle not started to perform the operation");
-        }
-    }
-
     @Around("execution(public void dev.erikestr.services.VehicleService.moveVehicle(boolean))")
     public void logAroundMoveVehicle(ProceedingJoinPoint pjp) throws Throwable {
         logger.info("move started: {} ms", 0);
@@ -72,13 +66,6 @@ public class LoggerAspect {
     }
 
     // -------------------------------- Brake --------------------------------
-
-    @Before("execution(public String dev.erikestr.services.VehicleService.applyBrake(boolean)) && args(vehicleStarted)")
-    public void logBeforeApplyBrake(boolean vehicleStarted) {
-        if (vehicleStarted) {
-            logger.info("Vehicle not started to perform the operation");
-        }
-    }
 
     @Around("execution(public String dev.erikestr.services.VehicleService.applyBrake(boolean))")
     public Object logAftereApplyBrake(ProceedingJoinPoint pjp) throws Throwable {
