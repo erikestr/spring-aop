@@ -25,6 +25,7 @@ public class VehicleService {
     }
 
     public String moveVehicle(boolean vehicleStarted) {
+        // throw new RuntimeException("Simulated exception in moveVehicle");
         return vehicleStarted ? tyres.rotate() : null;
     }
 

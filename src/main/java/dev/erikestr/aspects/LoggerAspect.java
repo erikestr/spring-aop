@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.time.Instant;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -78,5 +80,15 @@ public class LoggerAspect {
         logger.info("applyBrake finished: {} ms", timeElapsed);
 
         return returnValue;
+    }
+
+    @AfterThrowing(pointcut = "execution(public String dev.erikestr.services.VehicleService.*(..))", throwing = "ex")
+    public void logAfterThrowingApplyBrake(Exception ex) {
+        logger.error("Exception thrown in VehicleService: {}", ex.getMessage());
+    }
+
+    @AfterReturning(pointcut = "execution(public String dev.erikestr.services.VehicleService.*(..))", returning = "result")
+    public void logAfterReturningApplyBrake(String result) {
+        logger.info("\u001B[31mMethod returned value: {}\u001B[0m", result);
     }
 }
