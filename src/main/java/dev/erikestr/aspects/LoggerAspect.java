@@ -18,6 +18,20 @@ public class LoggerAspect {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    // ----------------------------------------------------------------------
+    // ading more simplicity to the log messages
+    // ----------------------------------------------------------------------
+
+    @Around("execution(* dev.erikestr.services..*(..))")
+    public Object logSimpleMessages(ProceedingJoinPoint pjp) throws Throwable {
+        logger.info("[{}] -- simplicity --", pjp.getSignature().getName());
+
+        Object returnValue = pjp.proceed();
+
+        logger.info("[{}] -- simplicity --", pjp.getSignature().getName());
+        return returnValue;
+    }
+
     // ------------------------------- Music --------------------------------
 
     @Around("execution(public String dev.erikestr.services.VehicleService.playMusic(boolean, dev.erikestr.model.Song))")
