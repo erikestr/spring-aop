@@ -21,11 +21,12 @@ public class VehicleNissan implements Vehicle {
     private VehicleService vehicleService;
 
     public VehicleNissan() {
-        System.out.println("\t\tNissan constructor called");
+        System.out.println("Nissan constructor called");
     }
 
     @Autowired
     public VehicleNissan(VehicleService vehicleService) {
+        System.out.println("Nissan constructor called");
         this.vehicleService = vehicleService;
     }
 

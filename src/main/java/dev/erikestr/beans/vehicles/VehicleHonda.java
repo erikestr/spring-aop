@@ -19,11 +19,12 @@ public class VehicleHonda implements Vehicle {
     private VehicleService vehicleService;
 
     public VehicleHonda() {
-        System.out.println("\t\tHonda constructor called");
+        System.out.println("Honda constructor called");
     }
 
     @Autowired
     public VehicleHonda(VehicleService vehicleService) {
+        System.out.println("Honda constructor called");
         this.vehicleService = vehicleService;
     }
 
