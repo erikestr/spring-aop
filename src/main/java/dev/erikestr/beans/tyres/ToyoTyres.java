@@ -38,8 +38,9 @@ public class ToyoTyres implements Tyres {
     }
 
     @Override
-    public void rotate() {
-        System.out.println("\u001B[35mToyo tyres are rotating\u001B[0m");
+    public String rotate() {
+        String message = "\u001B[35mToyo tyres are rotating\u001B[0m";
+        return message;
     }
 
     @Override

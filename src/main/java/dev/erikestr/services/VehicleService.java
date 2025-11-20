@@ -24,10 +24,8 @@ public class VehicleService {
         return vehicleStarted ? speakers.makeSound(song) : null;
     }
 
-    public void moveVehicle(boolean vehicleStarted) {
-        if (vehicleStarted) {
-            tyres.rotate();
-        }
+    public String moveVehicle(boolean vehicleStarted) {
+        return vehicleStarted ? tyres.rotate() : null;
     }
 
     public String applyBrake(boolean vehicleStarted) {

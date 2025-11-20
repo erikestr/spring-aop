@@ -30,19 +30,24 @@ public class VehicleHonda implements Vehicle {
 
     @Override
     public void performVehicleTestFunctions() {
-        System.out.println("\u001B[32m--- Service Working ---\u001B[0m");
+        System.out.println("----------- \u001B[32m Testing of Honda started  \u001B[0m -----------");
+
+        boolean vehicleStarted = false;
 
         // Testing Sound System
         Song currentSong = systemSound();
-        String music = vehicleService.playMusic(true, currentSong);
+        String music = vehicleService.playMusic(vehicleStarted, currentSong);
         System.out.println("\u001B[35mMusic playing: " + music + "\u001B[0m");
 
         // Testing Movement
-        vehicleService.moveVehicle(true);
-        String brakeMessage = vehicleService.applyBrake(true);
+        String movementMessage = vehicleService.moveVehicle(vehicleStarted);
+        System.out.println("\u001B[35mVehicle moved: " + movementMessage + "\u001B[0m");
+
+        // Testing Brake
+        String brakeMessage = vehicleService.applyBrake(vehicleStarted);
         System.out.println("\u001B[35mBrake message: " + brakeMessage + "\u001B[0m");
 
-        System.out.println("\u001B[32m--- Service Stopped ---\u001B[0m");
+        System.out.println("----------- \u001B[32m Testing of Honda finished \u001B[0m -----------");
     }
 
     @Override

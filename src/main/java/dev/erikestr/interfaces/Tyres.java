@@ -6,8 +6,8 @@ public interface Tyres extends Product {
 
     void setDurability(int durability);
 
-    void rotate();
+    String rotate();
 
     String stopRotation();
-    
+
 }
